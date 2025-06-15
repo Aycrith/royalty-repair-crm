@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm ci || npm install",
+  "framework": "nextjs",
+  "functions": {
+    "app/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "env": {
+    "SKIP_BUILD_REDIS": "true",
+    "NODE_ENV": "production",
+    "NEXT_PUBLIC_SUPABASE_URL": "https://eztzatvxjcesmzduvpfz.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6dHphdHZ4amNlc216ZHV2cGZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg3NDExOTgsImV4cCI6MjA2NDMxNzE5OH0.IIehcYy2AVg5nBVKjY_pdiAJcDphHkUqdsEOTBEGNOU"
+  },
+  "build": {
+    "env": {
+      "SKIP_BUILD_REDIS": "true",
+      "NODE_ENV": "production"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
