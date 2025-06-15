@@ -4,14 +4,6 @@
   "outputDirectory": ".next",
   "installCommand": "npm ci || npm install",
   "framework": "nextjs",
-  "functions": {
-    "app/api/**/*.js": {
-      "runtime": "nodejs20.x"
-    },
-    "pages/api/**/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "env": {
     "SKIP_BUILD_REDIS": "true",
     "NODE_ENV": "production",
