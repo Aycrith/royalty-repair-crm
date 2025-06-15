@@ -1,4 +1,20 @@
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+
 export default function HomePage() {
+  const router = useRouter()
+
+  const handleGetStarted = () => {
+    router.push('/login')
+  }
+
+  const handleViewDemo = () => {
+    router.push('/dashboard')
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-cyan-50">
       <div className="text-center max-w-4xl mx-auto px-6">
@@ -8,6 +24,16 @@ export default function HomePage() {
         <p className="text-xl text-gray-600 mb-8">
           Enterprise-grade Customer Relationship Management system for repair service businesses
         </p>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button onClick={handleGetStarted} size="lg" className="px-8 py-3">
+            Get Started
+          </Button>
+          <Button onClick={handleViewDemo} variant="outline" size="lg" className="px-8 py-3">
+            View Demo
+          </Button>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h3 className="text-lg font-semibold mb-2">👥 Customer Management</h3>
@@ -22,11 +48,16 @@ export default function HomePage() {
             <p className="text-gray-600">Automated billing and payment processing</p>
           </div>
         </div>
+
         <div className="mt-12">
           <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full">
             <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-            Deployment Successful - Build Stabilization Complete
+            ✅ Fully Functional CRM Application Ready
           </div>
+        </div>
+
+        <div className="mt-8 text-sm text-gray-500">
+          <p>🚀 Features: Authentication • Customer Analytics • Advanced Search • Supabase Integration</p>
         </div>
       </div>
     </div>
