@@ -5,7 +5,10 @@
   "installCommand": "npm ci || npm install",
   "framework": "nextjs",
   "functions": {
-    "app/**/*.js": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs20.x"
+    },
+    "pages/api/**/*.js": {
       "runtime": "nodejs20.x"
     }
   },
