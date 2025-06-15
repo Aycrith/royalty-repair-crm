@@ -25,8 +25,8 @@ const nextConfig = {
     webpackMemoryOptimizations: true,
     // Enable SWC transforms for better performance
     forceSwcTransforms: true,
-    // Enable CSS optimization
-    optimizeCss: true,
+    // Disable CSS optimization temporarily to avoid critters dependency issues
+    optimizeCss: false,
     // Enable optimizePackageImports for better tree shaking
     optimizePackageImports: [
       '@radix-ui/react-accordion',
@@ -90,6 +90,29 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  
+  // Webpack configuration for better build stability
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Optimize for production builds
+    if (!dev) {
+      config.optimization = {
+        ...config.optimization,
+        // Reduce bundle size
+        usedExports: true,
+        sideEffects: false,
+      };
+    }
+    
+    // Handle potential module resolution issues
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
+    
+    return config;
   },
 };
 
